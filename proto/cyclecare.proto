@@ -2,21 +2,16 @@ syntax = "proto3";
 
 package cyclecare;
 
-service CycleCareService {
-  rpc UploadVideo(stream VideoChunk) returns (UploadStatus);
-  rpc StreamVideo(VideoRequest) returns (stream VideoChunk);
-}
-
-message VideoChunk {
+message VideoChunkResponse {
   bytes data = 1;
   string filename = 2;
 }
 
-message UploadStatus {
-  string message = 1;
-  int32 code = 2;
+message StreamVideoRequest {
+  string filename = 1;
 }
 
-message VideoRequest {
-  string filename = 1;
+service CycleCareService {
+  rpc uploadVideo(stream VideoChunkResponse) returns (StreamVideoRequest);
+  rpc streamVideo(StreamVideoRequest) returns (stream VideoChunkResponse);
 }

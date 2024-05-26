@@ -14,19 +14,17 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0f\x63yclecare.proto\x12\tcyclecare\",\n\nVideoChunk\x12\x0c\n\x04\x64\x61ta\x18\x01 \x01(\x0c\x12\x10\n\x08\x66ilename\x18\x02 \x01(\t\"-\n\x0cUploadStatus\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x0c\n\x04\x63ode\x18\x02 \x01(\x05\" \n\x0cVideoRequest\x12\x10\n\x08\x66ilename\x18\x01 \x01(\t2\x94\x01\n\x10\x43ycleCareService\x12?\n\x0bUploadVideo\x12\x15.cyclecare.VideoChunk\x1a\x17.cyclecare.UploadStatus(\x01\x12?\n\x0bStreamVideo\x12\x17.cyclecare.VideoRequest\x1a\x15.cyclecare.VideoChunk0\x01\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0f\x63yclecare.proto\x12\tcyclecare\"4\n\x12VideoChunkResponse\x12\x0c\n\x04\x64\x61ta\x18\x01 \x01(\x0c\x12\x10\n\x08\x66ilename\x18\x02 \x01(\t\"&\n\x12StreamVideoRequest\x12\x10\n\x08\x66ilename\x18\x01 \x01(\t2\xb0\x01\n\x10\x43ycleCareService\x12M\n\x0buploadVideo\x12\x1d.cyclecare.VideoChunkResponse\x1a\x1d.cyclecare.StreamVideoRequest(\x01\x12M\n\x0bstreamVideo\x12\x1d.cyclecare.StreamVideoRequest\x1a\x1d.cyclecare.VideoChunkResponse0\x01\x62\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'cyclecare_pb2', _globals)
 if _descriptor._USE_C_DESCRIPTORS == False:
   DESCRIPTOR._options = None
-  _globals['_VIDEOCHUNK']._serialized_start=30
-  _globals['_VIDEOCHUNK']._serialized_end=74
-  _globals['_UPLOADSTATUS']._serialized_start=76
-  _globals['_UPLOADSTATUS']._serialized_end=121
-  _globals['_VIDEOREQUEST']._serialized_start=123
-  _globals['_VIDEOREQUEST']._serialized_end=155
-  _globals['_CYCLECARESERVICE']._serialized_start=158
-  _globals['_CYCLECARESERVICE']._serialized_end=306
+  _globals['_VIDEOCHUNKRESPONSE']._serialized_start=30
+  _globals['_VIDEOCHUNKRESPONSE']._serialized_end=82
+  _globals['_STREAMVIDEOREQUEST']._serialized_start=84
+  _globals['_STREAMVIDEOREQUEST']._serialized_end=122
+  _globals['_CYCLECARESERVICE']._serialized_start=125
+  _globals['_CYCLECARESERVICE']._serialized_end=301
 # @@protoc_insertion_point(module_scope)
