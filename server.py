@@ -4,7 +4,7 @@ import os
 import cyclecare_pb2
 import cyclecare_pb2_grpc
 
-SERVER_PORT = 3000
+SERVER_PORT = "3000"
 CHUNK_SIZE = 1024
 UPLOAD_DIR = "./media"
 
