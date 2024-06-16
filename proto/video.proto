@@ -1,7 +1,5 @@
 syntax = "proto3";
 
-package cyclecare;
-
 message VideoChunkResponse {
   bytes data = 1;
   string filename = 2;
