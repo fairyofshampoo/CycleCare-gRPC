@@ -11,7 +11,7 @@ message StreamVideoRequest {
   string filename = 1;
 }
 
-service CycleCareService {
+service VideoService {
   rpc uploadVideo(stream VideoChunkResponse) returns (StreamVideoRequest);
   rpc streamVideo(StreamVideoRequest) returns (stream VideoChunkResponse);
 }
