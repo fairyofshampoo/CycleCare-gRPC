@@ -15,12 +15,12 @@ class VideoServiceStub(object):
             channel: A grpc.Channel.
         """
         self.uploadVideo = channel.stream_unary(
-                '/VideoService/uploadVideo',
+                '/CycleCare.VideoService/uploadVideo',
                 request_serializer=video__pb2.VideoChunkResponse.SerializeToString,
                 response_deserializer=video__pb2.StreamVideoRequest.FromString,
                 )
         self.streamVideo = channel.unary_stream(
-                '/VideoService/streamVideo',
+                '/CycleCare.VideoService/streamVideo',
                 request_serializer=video__pb2.StreamVideoRequest.SerializeToString,
                 response_deserializer=video__pb2.VideoChunkResponse.FromString,
                 )
@@ -56,7 +56,7 @@ def add_VideoServiceServicer_to_server(servicer, server):
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'VideoService', rpc_method_handlers)
+            'CycleCare.VideoService', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
 
 
@@ -75,7 +75,7 @@ class VideoService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.stream_unary(request_iterator, target, '/VideoService/uploadVideo',
+        return grpc.experimental.stream_unary(request_iterator, target, '/CycleCare.VideoService/uploadVideo',
             video__pb2.VideoChunkResponse.SerializeToString,
             video__pb2.StreamVideoRequest.FromString,
             options, channel_credentials,
@@ -92,7 +92,7 @@ class VideoService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_stream(request, target, '/VideoService/streamVideo',
+        return grpc.experimental.unary_stream(request, target, '/CycleCare.VideoService/streamVideo',
             video__pb2.StreamVideoRequest.SerializeToString,
             video__pb2.VideoChunkResponse.FromString,
             options, channel_credentials,

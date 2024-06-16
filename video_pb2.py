@@ -14,17 +14,17 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0bvideo.proto\"4\n\x12VideoChunkResponse\x12\x0c\n\x04\x64\x61ta\x18\x01 \x01(\x0c\x12\x10\n\x08\x66ilename\x18\x02 \x01(\t\"&\n\x12StreamVideoRequest\x12\x10\n\x08\x66ilename\x18\x01 \x01(\t2\x84\x01\n\x0cVideoService\x12\x39\n\x0buploadVideo\x12\x13.VideoChunkResponse\x1a\x13.StreamVideoRequest(\x01\x12\x39\n\x0bstreamVideo\x12\x13.StreamVideoRequest\x1a\x13.VideoChunkResponse0\x01\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0bvideo.proto\x12\tCycleCare\"4\n\x12VideoChunkResponse\x12\x0c\n\x04\x64\x61ta\x18\x01 \x01(\x0c\x12\x10\n\x08\x66ilename\x18\x02 \x01(\t\"&\n\x12StreamVideoRequest\x12\x10\n\x08\x66ilename\x18\x01 \x01(\t2\xac\x01\n\x0cVideoService\x12M\n\x0buploadVideo\x12\x1d.CycleCare.VideoChunkResponse\x1a\x1d.CycleCare.StreamVideoRequest(\x01\x12M\n\x0bstreamVideo\x12\x1d.CycleCare.StreamVideoRequest\x1a\x1d.CycleCare.VideoChunkResponse0\x01\x62\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'video_pb2', _globals)
 if _descriptor._USE_C_DESCRIPTORS == False:
   DESCRIPTOR._options = None
-  _globals['_VIDEOCHUNKRESPONSE']._serialized_start=15
-  _globals['_VIDEOCHUNKRESPONSE']._serialized_end=67
-  _globals['_STREAMVIDEOREQUEST']._serialized_start=69
-  _globals['_STREAMVIDEOREQUEST']._serialized_end=107
-  _globals['_VIDEOSERVICE']._serialized_start=110
-  _globals['_VIDEOSERVICE']._serialized_end=242
+  _globals['_VIDEOCHUNKRESPONSE']._serialized_start=26
+  _globals['_VIDEOCHUNKRESPONSE']._serialized_end=78
+  _globals['_STREAMVIDEOREQUEST']._serialized_start=80
+  _globals['_STREAMVIDEOREQUEST']._serialized_end=118
+  _globals['_VIDEOSERVICE']._serialized_start=121
+  _globals['_VIDEOSERVICE']._serialized_end=293
 # @@protoc_insertion_point(module_scope)
