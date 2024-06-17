@@ -1,8 +1,8 @@
 import grpc
 from concurrent import futures
 import os
-import cyclecare_pb2
-import cyclecare_pb2_grpc
+import video__pb2
+import video_pb2_grpc
 
 SERVER_PORT = "3000"
 CHUNK_SIZE = 1024
@@ -11,7 +11,7 @@ UPLOAD_DIR = "./media"
 if not os.path.exists(UPLOAD_DIR):
     os.makedirs(UPLOAD_DIR)
 
-class CycleCareServiceServicer(cyclecare_pb2_grpc.CycleCareServiceServicer):
+class VideoServiceServicer(video_pb2_grpc.VideoServiceServicer):
     def uploadVideo(self, request_iterator, context):
         filename = None
         temp_file_path = None
@@ -25,20 +25,20 @@ class CycleCareServiceServicer(cyclecare_pb2_grpc.CycleCareServiceServicer):
                 f.write(video_chunk.data)
                 print('.', end='', flush=True)
 
-        return cyclecare_pb2.StreamVideoRequest(filename=filename)
+        return video__pb2.StreamVideoRequest(filename=filename)
 
     def streamVideo(self, request, context):
         file_path = os.path.join(UPLOAD_DIR, request.filename)
         with open(file_path, 'rb') as content_file:
             while chunk_bytes := content_file.read(chunk_size):
-                yield cyclecare_pb2.VideoChunkResponse(data=chunk, filename=request.filename)
+                yield video__pb2.VideoChunkResponse(data=chunk, filename=request.filename)
                 print('.', end='', flush=True)
 
 def serve():
-    servicer = CycleCareServiceServicer()
+    servicer = VideoServiceServicer()
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
 
-    cyclecare_pb2_grpc.add_CycleCareServiceServicer_to_server(servicer, server)
+    video_pb2_grpc.add_VideoServiceServicer_to_server(servicer, server)
     server.add_insecure_port("[::]:" + SERVER_PORT)
     server.start()
     print("Servidor gRPC en ejecución en el puerto " + SERVER_PORT)

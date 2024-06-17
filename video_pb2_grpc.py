@@ -2,10 +2,10 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-import cyclecare_pb2 as cyclecare__pb2
+import video_pb2 as video__pb2
 
 
-class CycleCareServiceStub(object):
+class VideoServiceStub(object):
     """Missing associated documentation comment in .proto file."""
 
     def __init__(self, channel):
@@ -15,18 +15,18 @@ class CycleCareServiceStub(object):
             channel: A grpc.Channel.
         """
         self.uploadVideo = channel.stream_unary(
-                '/cyclecare.CycleCareService/uploadVideo',
-                request_serializer=cyclecare__pb2.VideoChunkResponse.SerializeToString,
-                response_deserializer=cyclecare__pb2.StreamVideoRequest.FromString,
+                '/CycleCare.VideoService/uploadVideo',
+                request_serializer=video__pb2.VideoChunkResponse.SerializeToString,
+                response_deserializer=video__pb2.StreamVideoRequest.FromString,
                 )
         self.streamVideo = channel.unary_stream(
-                '/cyclecare.CycleCareService/streamVideo',
-                request_serializer=cyclecare__pb2.StreamVideoRequest.SerializeToString,
-                response_deserializer=cyclecare__pb2.VideoChunkResponse.FromString,
+                '/CycleCare.VideoService/streamVideo',
+                request_serializer=video__pb2.StreamVideoRequest.SerializeToString,
+                response_deserializer=video__pb2.VideoChunkResponse.FromString,
                 )
 
 
-class CycleCareServiceServicer(object):
+class VideoServiceServicer(object):
     """Missing associated documentation comment in .proto file."""
 
     def uploadVideo(self, request_iterator, context):
@@ -42,26 +42,26 @@ class CycleCareServiceServicer(object):
         raise NotImplementedError('Method not implemented!')
 
 
-def add_CycleCareServiceServicer_to_server(servicer, server):
+def add_VideoServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'uploadVideo': grpc.stream_unary_rpc_method_handler(
                     servicer.uploadVideo,
-                    request_deserializer=cyclecare__pb2.VideoChunkResponse.FromString,
-                    response_serializer=cyclecare__pb2.StreamVideoRequest.SerializeToString,
+                    request_deserializer=video__pb2.VideoChunkResponse.FromString,
+                    response_serializer=video__pb2.StreamVideoRequest.SerializeToString,
             ),
             'streamVideo': grpc.unary_stream_rpc_method_handler(
                     servicer.streamVideo,
-                    request_deserializer=cyclecare__pb2.StreamVideoRequest.FromString,
-                    response_serializer=cyclecare__pb2.VideoChunkResponse.SerializeToString,
+                    request_deserializer=video__pb2.StreamVideoRequest.FromString,
+                    response_serializer=video__pb2.VideoChunkResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'cyclecare.CycleCareService', rpc_method_handlers)
+            'CycleCare.VideoService', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
 
 
  # This class is part of an EXPERIMENTAL API.
-class CycleCareService(object):
+class VideoService(object):
     """Missing associated documentation comment in .proto file."""
 
     @staticmethod
@@ -75,9 +75,9 @@ class CycleCareService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.stream_unary(request_iterator, target, '/cyclecare.CycleCareService/uploadVideo',
-            cyclecare__pb2.VideoChunkResponse.SerializeToString,
-            cyclecare__pb2.StreamVideoRequest.FromString,
+        return grpc.experimental.stream_unary(request_iterator, target, '/CycleCare.VideoService/uploadVideo',
+            video__pb2.VideoChunkResponse.SerializeToString,
+            video__pb2.StreamVideoRequest.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -92,8 +92,8 @@ class CycleCareService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_stream(request, target, '/cyclecare.CycleCareService/streamVideo',
-            cyclecare__pb2.StreamVideoRequest.SerializeToString,
-            cyclecare__pb2.VideoChunkResponse.FromString,
+        return grpc.experimental.unary_stream(request, target, '/CycleCare.VideoService/streamVideo',
+            video__pb2.StreamVideoRequest.SerializeToString,
+            video__pb2.VideoChunkResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
